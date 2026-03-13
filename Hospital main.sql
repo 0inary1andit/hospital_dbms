@@ -20,11 +20,19 @@ CREATE TABLE Doctors(
     FOREIGN KEY (dept_id) REFERENCES Departments(dept_id)
 );
 
-INSERT INTO Doctors VALUES (101, 'Dr. Mehta', 'Cardiologist', 3, '9876543210', 12);
-INSERT INTO Doctors VALUES (102, 'Dr. Priya', 'Orthopedic', 2, '9876541111', 8);
-INSERT INTO Doctors VALUES (103, 'Dr. Rohan', 'Pediatrician', 4, '9123456780', 5);
-INSERT INTO Doctors VALUES (104, 'Dr. Anjali', 'Surgeon', 2, '9988776655', 10);
-INSERT INTO Doctors VALUES (105, 'Dr. Sara', 'Radiologist', 5, '9876512345', 7);
+INSERT INTO Doctors VALUES (101, 'Dr. Taarak Mehta', 'Cardiologist', 3, '9876543210', 12);
+INSERT INTO Doctors VALUES (102, 'Dr. Priya Gupta', 'Orthopedic', 2, '9876541111', 8);
+INSERT INTO Doctors VALUES (103, 'Dr. Rohan air', 'Pediatrician', 4, '9123456780', 5);
+INSERT INTO Doctors VALUES (104, 'Dr. Anjali Sharma', 'Surgeon', 2, '9988776655', 10);
+INSERT INTO Doctors VALUES (105, 'Dr. Sara Khan', 'Radiologist', 5, '9876512345', 7);
+INSERT INTO Doctors VALUES(106, 'Dr. Meera Nair', 'Pediatrician', 4, '9555443322', 6),
+INSERT INTO Doctors VALUES(107, 'Dr. Arjun Kapoor', 'General Surgeon', 2, '9444332211', 14),
+INSERT INTO Doctors VALUES(108, 'Dr. Sunita Deshmukh', 'Radiologist', 5, '9333221100', 9),
+INSERT INTO Doctors VALUES(109, 'Dr. Vikram Seth', 'Emergency Medicine', 9, '9222110099', 11),
+INSERT INTO Doctors VALUES(110, 'Dr. Pooja Bose', 'Gynecologist', 10, '9111009988', 13),
+INSERT INTO Doctors VALUES(111, 'Dr. Suresh Menon', 'Neurologist', 3, '9000998877', 18),
+INSERT INTO Doctors VALUES(112, 'Dr. Deepa Joshi', 'Dermatologist', 10, '8999887766', 4),
+INSERT INTO Doctors VALUES(113, 'Dr. Sandeep Varma', 'Anesthesiologist', 2, '8888776655', 16);
 
 CREATE TABLE Patients(
     patient_id INT PRIMARY KEY,
@@ -42,6 +50,12 @@ INSERT INTO Patients VALUES (202, 'Anjali Reddy', 19, 'Female', '9123456780', 'C
 INSERT INTO Patients VALUES (203, 'Vikram Singh', 35, 'Male', '9988776655', 'Bengaluru', 'A+', '2026-01-20');
 INSERT INTO Patients VALUES (204, 'Sita Patel', 28, 'Female', '9876512345', 'Hyderabad', 'AB+', '2026-02-10');
 INSERT INTO Patients VALUES (205, 'Aryan Kumar', 40, 'Male', '9123409876', 'Chennai', 'O-', '2026-02-12');
+INSERT INTO Patients VALUES(206, 'Saanvi Mishra', 45, 'Female', '9845012345', 'Pune', 'B-', '2026-02-14'),
+INSERT INTO Patients VALUES(207, 'Aryan Chopra', 5, 'Male', '9632145870', 'Ahmedabad', 'A-', '2026-02-15'),
+INSERT INTO Patients VALUES(208, 'Diya Verma', 51, 'Female', '9512348760', 'Kolkata', 'O+', '2026-02-16'),
+INSERT INTO Patients VALUES(209, 'Advait Kulkarni', 39, 'Male', '9420123456', 'Nagpur', 'B+', '2026-02-17'),
+INSERT INTO Patients VALUES(210, 'Myra Saxena', 29, 'Female', '9301234567', 'Lucknow', 'A+', '2026-02-18');
+
 
 CREATE TABLE Appointments(
     appointment_id INT PRIMARY KEY,
@@ -89,3 +103,17 @@ INSERT INTO Prescriptions VALUES (502, 302, 'Amoxicillin', '250mg', 7);
 INSERT INTO Prescriptions VALUES (503, 303, 'Ibuprofen', '400mg', 5);
 INSERT INTO Prescriptions VALUES (504, 304, 'Cefixime', '200mg', 10);
 INSERT INTO Prescriptions VALUES (505, 305, 'Vitamin D', '1000 IU', 30);
+
+CREATE TABLE Staff (
+    staff_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    role VARCHAR(30),
+    dept_id INT,
+    phone VARCHAR(15),
+    FOREIGN KEY (dept_id) REFERENCES Departments(dept_id)
+);
+
+INSERT INTO Staff VALUES 
+(701, 'Sunil Kumar', 'Nurse', 8, '9811223344'),
+(702, 'Rekha Singh', 'Receptionist', 1, '9822334455'),
+(703, 'Manish Paul', 'Lab Technician', 7, '9833445566');
