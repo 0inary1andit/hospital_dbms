@@ -2,11 +2,6 @@
 
 > A production-style MySQL database for real-world hospital operations — built while learning DBMS.
 
-![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
-![Database](https://img.shields.io/badge/Database-MySQL-blue)
-![Language](https://img.shields.io/badge/Language-SQL-orange)
-![License](https://img.shields.io/badge/License-MIT-green)
-
 ---
 
 ## Overview
@@ -29,23 +24,12 @@ A relational database system designed to handle core hospital workflows — pati
 
 ---
 
-## ER Diagram
-
-![ER Diagram](er_diagram.svg)
 
 ---
 
 ## Getting Started
 
 **Prerequisites:** MySQL 8.0+
-
-```bash
-git clone https://github.com/0inary1andit/hospital_dbms.git
-cd hospital_dbms
-mysql -u root -p < schema/tables.sql
-mysql -u root -p < schema/sample_data.sql
-```
-
 ---
 
 ## Sample Queries
@@ -68,20 +52,6 @@ WHERE b.payment_status = 'Unpaid';
 
 ---
 
-## Roadmap
-
-- [x] Core schema — Departments, Doctors, Patients, Appointments, Bills, Prescriptions, Staff
-- [x] Sample data for all tables
-- [x] ER Diagram
-- [ ] Rooms and bed management table
-- [ ] Lab tests and results table
-- [ ] Pharmacy and inventory table
-- [ ] Stored procedures (admit, discharge, generate bill)
-- [ ] Views and triggers
-- [ ] Python backend (Flask/FastAPI)
-- [ ] Web frontend (HTML/CSS/JS)
-
----
 
 ## Tech Stack
 
