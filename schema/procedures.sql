@@ -1,18 +1,10 @@
--- ============================================================
---  Hospital Management Database System
---  File        : 04_procedures.sql
---  Description : Stored procedures for common hospital operations
---  Run after   : 03_views.sql
--- ============================================================
+
 
 USE hospital;
 
 DELIMITER $$
 
--- ------------------------------------------------------------
--- 1. Admit a patient
---    Usage: CALL sp_admit_patient(1, 3, 2, 'Chest pain observation');
--- ------------------------------------------------------------
+
 CREATE PROCEDURE sp_admit_patient(
     IN  p_patient_id  INT,
     IN  p_doctor_id   INT,
@@ -40,10 +32,7 @@ BEGIN
     END IF;
 END$$
 
--- ------------------------------------------------------------
--- 2. Discharge a patient
---    Usage: CALL sp_discharge_patient(3);
--- ------------------------------------------------------------
+
 CREATE PROCEDURE sp_discharge_patient(
     IN p_admission_id INT
 )
@@ -72,9 +61,7 @@ BEGIN
 END$$
 
 -- ------------------------------------------------------------
--- 3. Generate a bill for an admission
---    Usage: CALL sp_generate_bill(1, 3200, 850, 500, 1000, 'Card');
--- ------------------------------------------------------------
+
 CREATE PROCEDURE sp_generate_bill(
     IN p_admission_id      INT,
     IN p_room_charges      DECIMAL(10,2),
@@ -101,10 +88,7 @@ BEGIN
            (p_room_charges + p_medicine_charges + p_lab_charges + p_doctor_fees) AS total_amount;
 END$$
 
--- ------------------------------------------------------------
--- 4. Book an appointment
---    Usage: CALL sp_book_appointment(2, 5, '2026-03-20 10:00:00', 'Routine checkup');
--- ------------------------------------------------------------
+
 CREATE PROCEDURE sp_book_appointment(
     IN p_patient_id       INT,
     IN p_doctor_id        INT,
@@ -133,10 +117,7 @@ BEGIN
     END IF;
 END$$
 
--- ------------------------------------------------------------
--- 5. Get complete patient history
---    Usage: CALL sp_patient_history(1);
--- ------------------------------------------------------------
+
 CREATE PROCEDURE sp_patient_history(
     IN p_patient_id INT
 )
