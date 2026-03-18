@@ -1,9 +1,6 @@
--- ============================================================
---  Hospital Management Database System
---  File        : 05_triggers.sql
+
 --  Description : Triggers for automation and audit logging
---  Run after   : 04_procedures.sql
--- ============================================================
+
 
 USE hospital;
 
