@@ -1,15 +1,8 @@
--- ============================================================
---  Hospital Management Database System
---  File        : 06_queries.sql
---  Description : Useful queries for daily admin and analytics
---  These are run as needed — not part of setup
--- ============================================================
+
 
 USE hospital;
 
--- ============================================================
---  SECTION A — PATIENT QUERIES
--- ============================================================
+
 
 -- A1. All registered patients
 SELECT patient_id, name, age, gender, blood_group, phone, date_of_registration
@@ -29,9 +22,7 @@ FROM   Patients
 WHERE  blood_group = 'B+'
 ORDER  BY name;
 
--- ============================================================
---  SECTION B — APPOINTMENT QUERIES
--- ============================================================
+
 
 -- B1. All appointments for a doctor on a given date
 SELECT p.name AS patient, a.appointment_date, a.diagnosis, a.status
@@ -57,9 +48,7 @@ LEFT JOIN Appointments a ON d.doctor_id = a.doctor_id
 GROUP  BY d.doctor_id, d.name, d.specialization
 ORDER  BY total_appointments DESC;
 
--- ============================================================
---  SECTION C — ADMISSION & ROOM QUERIES
--- ============================================================
+
 
 -- C1. All currently admitted patients (uses view)
 SELECT * FROM vw_current_admissions;
@@ -86,9 +75,7 @@ JOIN   Departments   dp ON d.dept_id    = dp.dept_id
 GROUP  BY dp.dept_name
 ORDER  BY avg_days_stay DESC;
 
--- ============================================================
---  SECTION D — BILLING QUERIES
--- ============================================================
+
 
 -- D1. All unpaid bills (uses view)
 SELECT * FROM vw_unpaid_bills;
@@ -116,9 +103,7 @@ FROM   Bills
 GROUP  BY DATE_FORMAT(bill_date, '%Y-%m')
 ORDER  BY month DESC;
 
--- ============================================================
---  SECTION E — PHARMACY & LAB QUERIES
--- ============================================================
+
 
 -- E1. Low stock medicines (uses view)
 SELECT * FROM vw_low_stock;
@@ -138,9 +123,6 @@ LEFT JOIN Doctors d ON lt.doctor_id  = d.doctor_id
 WHERE  lt.status = 'Ordered'
 ORDER  BY lt.test_date;
 
--- ============================================================
---  SECTION F — STAFF & DEPARTMENT QUERIES
--- ============================================================
 
 -- F1. All staff with their departments
 SELECT s.name, s.role, dp.dept_name, s.phone, s.join_date
@@ -158,9 +140,7 @@ LEFT JOIN Staff   s ON dp.dept_id = s.dept_id
 GROUP  BY dp.dept_name
 ORDER  BY (doctors + support_staff) DESC;
 
--- ============================================================
---  SECTION G — AUDIT
--- ============================================================
+
 
 -- G1. Recent audit log entries
 SELECT log_id, table_name, action, record_id, performed_at
