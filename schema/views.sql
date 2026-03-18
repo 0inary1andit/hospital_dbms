@@ -1,9 +1,6 @@
--- ============================================================
---  Hospital Management Database System
---  File        : 03_views.sql
+
 --  Description : Useful saved queries as reusable views
---  Run after   : 02_sample_data.sql
--- ============================================================
+
 
 USE hospital;
 
