@@ -1,79 +1,105 @@
-Hospital Management Database System (DBMS Project)
+# 🏥 Hospital Management Database System
 
-A comprehensive, ready-to-use Hospital Management Database System designed using core Database Management System (DBMS) principles.
-This project is built incrementally while learning DBMS, focusing on real-world hospital workflows, data integrity, and scalability.
+> A production-style MySQL database for real-world hospital operations — built while learning DBMS.
 
- Project Objective
+![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
+![Database](https://img.shields.io/badge/Database-MySQL-blue)
+![Language](https://img.shields.io/badge/Language-SQL-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-The goal of this project is to design and implement a production-style hospital database, not just a theoretical blueprint.
+---
 
-Key objectives:
+## Overview
 
-Apply DBMS concepts in a real-world scenario
-Design a normalized relational database
-Implement meaningful SQL queries, constraints, and triggers
+A relational database system designed to handle core hospital workflows — patient registration, doctor management, appointments, billing, and prescriptions. Built with a focus on data integrity, normalization (3NF), and real-world usability.
 
+---
 
-> What This Project Covers:
+## Current Schema
 
-Requirement analysis for a hospital system
-Entity–Relationship (ER) modeling
-Conversion of ER model to relational schema
-Normalization (up to 3NF)
+| Table | Description |
+|---|---|
+| `Departments` | Hospital departments and heads |
+| `Doctors` | Doctor details, specialization, department |
+| `Patients` | Patient registration and personal info |
+| `Appointments` | Patient-doctor visit scheduling |
+| `Bills` | Invoice and payment records |
+| `Prescriptions` | Medicines prescribed per appointment |
+| `Staff` | Non-doctor hospital staff |
 
-SQL implementation
+---
 
-Constraints, triggers, and stored procedures
+## ER Diagram
 
-Sample data for testing and demonstration:
+![ER Diagram](er_diagram.svg)
 
-Patients
-Doctors
-Departments
-Appointments
-Admissions & Discharges
-Billing
-Laboratory Tests
-Pharmacy
-Rooms & Beds
-Hospital Staff
+---
 
+## Getting Started
 
+**Prerequisites:** MySQL 8.0+
 
+```bash
+git clone https://github.com/0inary1andit/hospital_dbms.git
+cd hospital_dbms
+mysql -u root -p < schema/tables.sql
+mysql -u root -p < schema/sample_data.sql
+```
 
- Technologies Used:
+---
 
-Database: MySQL / PostgreSQL (decided during implementation)
+## Sample Queries
 
-Language: SQL
+**All appointments for a doctor on a given day:**
+```sql
+SELECT p.name, a.appointment_date, a.diagnosis, a.status
+FROM Appointments a
+JOIN Patients p ON a.patient_id = p.patient_id
+WHERE a.doctor_id = 101 AND DATE(a.appointment_date) = '2026-02-21';
+```
 
-Design Tools: draw.io / dbdiagram.io
+**Unpaid bills summary:**
+```sql
+SELECT p.name, b.bill_id, b.total_amount, b.payment_mode
+FROM Bills b
+JOIN Patients p ON b.patient_id = p.patient_id
+WHERE b.payment_status = 'Unpaid';
+```
 
-Version Control: Git & GitHub
+---
 
+## Roadmap
 
- Sample Use Cases:
+- [x] Core schema — Departments, Doctors, Patients, Appointments, Bills, Prescriptions, Staff
+- [x] Sample data for all tables
+- [x] ER Diagram
+- [ ] Rooms and bed management table
+- [ ] Lab tests and results table
+- [ ] Pharmacy and inventory table
+- [ ] Stored procedures (admit, discharge, generate bill)
+- [ ] Views and triggers
+- [ ] Python backend (Flask/FastAPI)
+- [ ] Web frontend (HTML/CSS/JS)
 
-1.View all appointments for a doctor on a given day
+---
 
-2.Track patient admission history
+## Tech Stack
 
-3.Generate billing summaries
+| | |
+|---|---|
+| Database | MySQL 8.0 |
+| Design | draw.io |
+| Planned backend | Python (Flask) |
+| Planned frontend | HTML, CSS, JS |
 
-4.Check room and bed availability
+---
 
+## Author
 
- Project Status
-In Progress
+**Mohit Satyal** — B.Tech CSE Student
 
-Currently working on: 
+---
 
-1.Requirement analysis
-2.ER diagrams for core modules
+## License
 
-
-Mohit Satyal
-B.Tech CSE Student
-Learning DBMS through real-world system design
-
-
+MIT — see [LICENSE](LICENSE)
