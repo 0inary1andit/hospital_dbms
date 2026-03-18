@@ -1,9 +1,4 @@
--- ============================================================
---  Hospital Management Database System
---  File        : 01_schema.sql
---  Description : Creates the database and all tables
---  Run first   : mysql -u root -p < 01_schema.sql
--- ============================================================
+
 
 DROP DATABASE IF EXISTS hospital;
 CREATE DATABASE hospital
@@ -12,9 +7,7 @@ CREATE DATABASE hospital
 
 USE hospital;
 
--- ------------------------------------------------------------
--- 1. DEPARTMENTS
--- ------------------------------------------------------------
+
 CREATE TABLE Departments (
     dept_id     INT           PRIMARY KEY AUTO_INCREMENT,
     dept_name   VARCHAR(50)   NOT NULL,
@@ -23,9 +16,7 @@ CREATE TABLE Departments (
     phone       VARCHAR(15)
 );
 
--- ------------------------------------------------------------
--- 2. DOCTORS
--- ------------------------------------------------------------
+
 CREATE TABLE Doctors (
     doctor_id        INT          PRIMARY KEY AUTO_INCREMENT,
     name             VARCHAR(50)  NOT NULL,
@@ -39,9 +30,7 @@ CREATE TABLE Doctors (
         ON DELETE SET NULL ON UPDATE CASCADE
 );
 
--- ------------------------------------------------------------
--- 3. PATIENTS
--- ------------------------------------------------------------
+
 CREATE TABLE Patients (
     patient_id           INT          PRIMARY KEY AUTO_INCREMENT,
     name                 VARCHAR(50)  NOT NULL,
@@ -55,9 +44,7 @@ CREATE TABLE Patients (
     emergency_contact    VARCHAR(15)
 );
 
--- ------------------------------------------------------------
--- 4. STAFF
--- ------------------------------------------------------------
+
 CREATE TABLE Staff (
     staff_id  INT          PRIMARY KEY AUTO_INCREMENT,
     name      VARCHAR(50)  NOT NULL,
@@ -70,9 +57,7 @@ CREATE TABLE Staff (
         ON DELETE SET NULL ON UPDATE CASCADE
 );
 
--- ------------------------------------------------------------
--- 5. ROOMS
--- ------------------------------------------------------------
+
 CREATE TABLE Rooms (
     room_id       INT          PRIMARY KEY AUTO_INCREMENT,
     room_number   VARCHAR(10)  NOT NULL UNIQUE,
@@ -85,9 +70,7 @@ CREATE TABLE Rooms (
         ON DELETE SET NULL ON UPDATE CASCADE
 );
 
--- ------------------------------------------------------------
--- 6. APPOINTMENTS
--- ------------------------------------------------------------
+
 CREATE TABLE Appointments (
     appointment_id   INT           PRIMARY KEY AUTO_INCREMENT,
     patient_id       INT           NOT NULL,
@@ -102,9 +85,7 @@ CREATE TABLE Appointments (
         ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
--- ------------------------------------------------------------
--- 7. ADMISSIONS
--- ------------------------------------------------------------
+
 CREATE TABLE Admissions (
     admission_id    INT  PRIMARY KEY AUTO_INCREMENT,
     patient_id      INT  NOT NULL,
@@ -122,9 +103,7 @@ CREATE TABLE Admissions (
         ON DELETE SET NULL ON UPDATE CASCADE
 );
 
--- ------------------------------------------------------------
--- 8. BILLS
--- ------------------------------------------------------------
+
 CREATE TABLE Bills (
     bill_id           INT            PRIMARY KEY AUTO_INCREMENT,
     patient_id        INT            NOT NULL,
@@ -144,9 +123,7 @@ CREATE TABLE Bills (
         ON DELETE SET NULL ON UPDATE CASCADE
 );
 
--- ------------------------------------------------------------
--- 9. PRESCRIPTIONS
--- ------------------------------------------------------------
+
 CREATE TABLE Prescriptions (
     prescription_id  INT          PRIMARY KEY AUTO_INCREMENT,
     appointment_id   INT          NOT NULL,
@@ -159,9 +136,7 @@ CREATE TABLE Prescriptions (
         ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- ------------------------------------------------------------
--- 10. LAB_TESTS
--- ------------------------------------------------------------
+
 CREATE TABLE Lab_Tests (
     test_id       INT          PRIMARY KEY AUTO_INCREMENT,
     patient_id    INT          NOT NULL,
@@ -177,9 +152,7 @@ CREATE TABLE Lab_Tests (
         ON DELETE SET NULL ON UPDATE CASCADE
 );
 
--- ------------------------------------------------------------
--- 11. PHARMACY
--- ------------------------------------------------------------
+
 CREATE TABLE Pharmacy (
     medicine_id     INT           PRIMARY KEY AUTO_INCREMENT,
     medicine_name   VARCHAR(50)   NOT NULL,
@@ -191,9 +164,7 @@ CREATE TABLE Pharmacy (
     reorder_level   INT           DEFAULT 10
 );
 
--- ------------------------------------------------------------
--- 12. AUDIT_LOG  (auto-populated by triggers in 03_triggers.sql)
--- ------------------------------------------------------------
+
 CREATE TABLE Audit_Log (
     log_id        INT          PRIMARY KEY AUTO_INCREMENT,
     table_name    VARCHAR(30)  NOT NULL,
