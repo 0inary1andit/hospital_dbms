@@ -59,8 +59,7 @@ WHERE b.payment_status = 'Unpaid';
 |---|---|
 | Database | MySQL 8.0 |
 | Design | draw.io |
-| Planned backend | Python (Flask) |
-| Planned frontend | HTML, CSS, JS |
+
 
 ---
 
