@@ -60,7 +60,6 @@ BEGIN
     END IF;
 END$$
 
--- ------------------------------------------------------------
 
 CREATE PROCEDURE sp_generate_bill(
     IN p_admission_id      INT,
